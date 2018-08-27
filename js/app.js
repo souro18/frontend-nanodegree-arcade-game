@@ -1,27 +1,3 @@
-// Enemies our player must avoid
-// var Enemy = function() {
-//     // Variables applied to each of our instances go here,
-//     // we've provided one for you to get started
-
-//     // The image/sprite for our enemies, this uses
-//     // a helper we've provided to easily load images
-//     this.sprite = 'images/enemy-bug.png';
-// };
-
-// // Update the enemy's position, required method for game
-// // Parameter: dt, a time delta between ticks
-// Enemy.prototype.update = function(dt) {
-//     // You should multiply any movement by the dt parameter
-//     // which will ensure the game runs at the same speed for
-//     // all computers.
-// };
-
-// // Draw the enemy on the screen, required method for game
-// Enemy.prototype.render = function() {
-//     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-// };
- 
-
 class Enemy {
     constructor(y=0,speed=20,sprite = 'images/enemy-bug.png'){
         this.sprite=sprite;
@@ -33,7 +9,6 @@ class Enemy {
         this.x+=(this.speed*dt);
         if(this.x>=400){
             this.x=0;
-            console.log('update');
         }
     }
     render(){
@@ -60,8 +35,7 @@ class Player {
             
        });
        if(collision){
-        this.x=200;
-        this.y=320;
+        this.reset();
        }
        //console.log(allEnemies);
     }
@@ -89,7 +63,8 @@ class Player {
                 this.y-=90;
              //   console.log('upmove');
              if(this.y<0){
-                this.y=320;
+                
+                this.won();
              }
             }
         }
@@ -101,6 +76,13 @@ class Player {
             }
         }
        // this.update();
+    }
+    async won(){
+        await new Promise(resolve => setTimeout(resolve, 500));
+        this.reset();
+    }
+    reset(){
+        this.y=320;
     }
 }
 
