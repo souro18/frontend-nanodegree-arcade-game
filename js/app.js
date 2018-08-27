@@ -50,7 +50,20 @@ class Player {
         this.y=y;
     }
     update(){
-
+        let xpos=this.x;
+        let ypos=this.y;
+        let collision=0;
+       allEnemies.forEach(function(enemy){
+            if((Math.abs(enemy.x-xpos)<40) && (Math.abs(enemy.y-ypos)<40)){
+                collision=1;
+            }
+            
+       });
+       if(collision){
+        this.x=200;
+        this.y=320;
+       }
+       //console.log(allEnemies);
     }
     render(){
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -87,6 +100,7 @@ class Player {
            //     console.log('downmove');
             }
         }
+       // this.update();
     }
 }
 
