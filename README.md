@@ -16,6 +16,9 @@ $ git clone https://github.com/souro18/frontend-nanodegree-arcade-game.git
 $ cd fend-project-memory-game
 ```
 
+Or open this [link](https://souro18.github.io/frontend-nanodegree-arcade-game/) to play online
+
+
 ## How To Play
 
 * Move the player using arrow keys.
